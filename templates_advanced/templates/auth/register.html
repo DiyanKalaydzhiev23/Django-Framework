@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+<h1 class="text-center">Register</h1>
+<div class="row d-flex justify-content-center">
+    <form method="post" class="form" action="{% url 'register' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in user_form %}
+            {% bootstrap_field field %}
+        {% endfor %}
+        {% for field in profile_form %}
+            {% bootstrap_field field %}
+        {% endfor %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Submit</button>
+        {% endbuttons %}
+    </form>
+</div>
+
+{% endblock %}
